@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { within, userEvent } from '@storybook/testing-library';
 import MyPage from './Page.vue';
+import { useRandom } from '../store';
 
 const meta = {
   title: 'Example/Page',
@@ -8,6 +9,10 @@ const meta = {
   render: () => ({
     components: { MyPage },
     template: '<my-page />',
+    setup() {
+      const randomStore = useRandom();
+      randomStore.getRandomNumber.mockImplementation(() => 42);
+    },
   }),
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/vue/configure/story-layout
