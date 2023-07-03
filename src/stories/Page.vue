@@ -49,11 +49,14 @@
         </svg>
         Viewports addon in the toolbar
       </div>
+
+      <p>Your lucky number is: {{ randomStore.getRandomNumber() }}</p>
     </section>
   </article>
 </template>
 
 <script lang="ts" setup>
+import { useRandom } from '../store';
 import './page.css';
 import MyHeader from './Header.vue';
 
@@ -70,4 +73,6 @@ const onLogout = () => {
 const onCreateAccount = () => {
   user.value = { name: 'Jane Doe' };
 };
+
+const randomStore = useRandom();
 </script>
